@@ -40,7 +40,7 @@ body {
 .page {
     /* 210mm ≈ 794px, 297mm ≈ 1123px */
     width: 794px;
-    min-height: 1123px;
+    height: 1123px; /* Force exact A4 height */
     margin: 0 auto 28px;
     background: var(--white);
     border-radius: 16px;
@@ -56,7 +56,7 @@ body {
 .hero {
     background: linear-gradient(135deg, #ffffff 0%, var(--g100) 100%);
     border-bottom: 1px solid var(--g200);
-    padding: 36px 48px 28px;
+    padding: 24px 40px 18px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -83,18 +83,18 @@ body {
     margin-bottom: 8px;
 }
 .hero-name {
-    font-size: 38px;
+    font-size: 28px;
     font-weight: 900;
     color: var(--black);
     letter-spacing: -0.05em;
     line-height: 1.1;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 .hero-desc {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--g600);
-    line-height: 1.7;
-    margin-bottom: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
 }
 .hero-contacts {
     display: flex;
@@ -107,8 +107,8 @@ body {
 
 .hero-photo {
     flex-shrink: 0;
-    width: 88px;
-    height: 117px;
+    width: 72px;
+    height: 96px;
     border-radius: 8px;
     object-fit: cover;
     border: 1px solid var(--g200);
@@ -127,7 +127,7 @@ body {
     flex-shrink: 0;
 }
 .kpi-card {
-    padding: 12px 16px;
+    padding: 8px 12px;
     border-right: 1px solid var(--g200);
     display: flex;
     flex-direction: column;
@@ -138,7 +138,7 @@ body {
 .kpi-card:last-child { border-right: none; }
 
 .kpi-n {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 900;
     color: var(--blue);
     letter-spacing: -0.04em;
@@ -168,20 +168,20 @@ body {
    PAGE BODY
    ============================================================ */
 .page-body {
-    padding: 0 48px;
+    padding: 0 40px;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 .page-body.full {
-    padding: 0 48px;
+    padding: 0 40px;
 }
 
 /* ============================================================
    SECTIONS
    ============================================================ */
 .sec {
-    padding: 16px 0;
+    padding: 24px 0;
     border-bottom: 1px solid var(--g200);
 }
 .sec.last { border-bottom: none; }
@@ -192,7 +192,7 @@ body {
     color: var(--g400);
     letter-spacing: 0.07em;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -240,19 +240,19 @@ body {
 }
 .row-r { flex: 1; }
 .row-main {
-    font-size: 14.5px;
+    font-size: 13.5px;
     font-weight: 700;
     color: var(--black);
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     display: flex;
     align-items: center;
     gap: 6px;
     flex-wrap: wrap;
 }
 .row-sub {
-    font-size: 12.5px;
+    font-size: 11.5px;
     color: var(--g500);
-    margin-bottom: 6px;
+    margin-bottom: 2px;
 }
 
 /* chips */
@@ -281,9 +281,9 @@ body {
 .bl li {
     position: relative;
     padding-left: 13px;
-    font-size: 12.5px;
+    font-size: 11.5px;
     color: var(--g600);
-    line-height: 1.6;
+    line-height: 1.5;
 }
 .bl li::before {
     content: '–';
@@ -305,7 +305,7 @@ body {
     background: var(--g50);
     border: 1px solid var(--g200);
     border-radius: 10px;
-    padding: 14px 16px;
+    padding: 10px 12px;
 }
 .proj-head {
     display: flex;
@@ -315,7 +315,7 @@ body {
     gap: 8px;
 }
 .proj-name {
-    font-size: 13.5px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--black);
 }
@@ -326,18 +326,18 @@ body {
     flex-shrink: 0;
 }
 .proj-desc {
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--g500);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 .proj-result {
-    margin-top: 8px;
+    margin-top: 4px;
     display: inline-block;
-    font-size: 11.5px;
+    font-size: 10.5px;
     font-weight: 600;
     color: var(--blue);
     background: var(--bluel);
-    padding: 3px 10px;
+    padding: 2px 8px;
     border-radius: 5px;
 }
 .proj-result strong { font-weight: 800; }
@@ -351,19 +351,19 @@ body {
     gap: 16px;
 }
 .sg-cat {
-    font-size: 10.5px;
+    font-size: 10px;
     font-weight: 700;
     color: var(--g500);
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
 }
 .sg-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 
 .stag {
-    font-size: 11.5px;
+    font-size: 10.5px;
     font-weight: 600;
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 6px;
     border: 1.5px solid var(--g200);
     color: var(--g800);
@@ -599,15 +599,13 @@ body {
 }
 
 /* ============================================================
-   PRINT — A4 정밀 레이아웃
+   PRINT — 화면과 동일하게 출력
    ============================================================ */
 @media print {
     body {
-        background: white;
-        padding: 0;
-        margin: 0;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     @page {
@@ -616,77 +614,33 @@ body {
     }
 
     .page {
-        width: 210mm;
-        height: 297mm;
-        min-height: unset;
-        overflow: hidden;
-        border-radius: 0;
-        box-shadow: none;
-        margin: 0;
-        page-break-after: always;
-        break-after: page;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        position: relative !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
+
+    .page * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
     .page:last-child {
-        page-break-after: avoid;
-        break-after: avoid;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
     }
     .page-break {
-        page-break-before: always;
-        break-before: page;
+        page-break-before: always !important;
+        break-before: page !important;
     }
-
-    /* ── Print spacing overrides ── */
-    .hero             { padding: 28px 44px 22px; }
-    .hero-name        { font-size: 34px; }
-    .hero-photo       { width: 82px; height: 109px; }
-    .hero-desc        { font-size: 12px; margin-bottom: 14px; }
-    .hero-contacts    { font-size: 11px; }
-
-    .kpi-card         { padding: 10px 14px; }
-    .kpi-n            { font-size: 20px; }
-    .kpi-d            { font-size: 10px; }
-
-    .page-body        { padding: 0 44px; }
-    .page-body.full   { padding: 0 44px; }
-
-    .sec              { padding: 11px 0; }
-    .sec.last         { padding-bottom: 0; }
-    .sec-t            { margin-bottom: 9px; font-size: 10px; }
-
-    .row-main         { font-size: 13.5px; }
-    .row-sub          { font-size: 11.5px; margin-bottom: 4px; }
-    .row-period       { font-size: 11px; width: 120px; }
-    .row              { gap: 12px; }
-
-    .bl li            { font-size: 11.5px; line-height: 1.55; }
-    .proj-card        { padding: 11px 14px; }
-    .proj-name        { font-size: 12.5px; }
-    .proj-desc        { font-size: 11px; margin-bottom: 3px; }
-    .proj-grid        { gap: 8px; }
-    .proj-result      { font-size: 10.5px; padding: 2px 8px; margin-top: 6px; }
-    .stag             { font-size: 10.5px; padding: 3px 8px; }
-    .sg-tags          { gap: 4px; }
-    .skills-row       { gap: 12px; }
-
-    /* Page 2 print */
-    .inner-hd         { padding: 24px 0 14px; }
-    .inner-title      { font-size: 24px; }
-    .summ-block       { padding: 12px 0; }
-    .summ-list li     { font-size: 12px; line-height: 1.55; }
-    .career-section-label { padding: 10px 0 2px; font-size: 10px; }
-    .cb               { padding: 11px 0; }
-    .cb.last          { padding-bottom: 28px; }
-    .cb-title         { font-size: 14.5px; margin-bottom: 6px; }
-    .cl li            { font-size: 11.5px; line-height: 1.55; gap: 2px; }
-    .cb-achieve       { font-size: 11px; padding: 4px 10px; }
-    .cb-meta          { margin-bottom: 4px; }
-
-    /* Page 3 print */
-    .essay            { padding: 14px 0; }
-    .essay-title      { font-size: 14px; margin-bottom: 5px; }
-    .essay-kpi        { font-size: 10.5px; margin-bottom: 8px; }
-    .essay-body p     { font-size: 12px; line-height: 1.7; }
-    .essay-body       { gap: 5px; }
 
     * { transition: none !important; }
 }
@@ -694,7 +648,7 @@ body {
 /* ============================================================
    RESPONSIVE (모바일)
    ============================================================ */
-@media (max-width: 840px) {
+@media screen and (max-width: 840px) {
     body { padding: 0; }
     .page {
         width: 100%;

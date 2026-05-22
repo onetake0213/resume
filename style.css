@@ -1,746 +1,719 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
+/* ============================================================
+   A4-FIRST TOSS BOLD RESUME
+   A4 = 210mm × 297mm  |  96dpi = 794px × 1123px
+   ============================================================ */
+
 :root {
-    --bg-color: #f8fafc;
-    /* Slate 50 */
-    --container-bg: #ffffff;
-    --text-main: #0f172a;
-    /* Slate 900 */
-    --text-sub: #475569;
-    /* Slate 600 */
-    --text-muted: #94a3b8;
-    /* Slate 400 */
-    --border-color: #e2e8f0;
-    /* Slate 200 */
-    --accent-color: #4f46e5;
-    /* Indigo 600 */
-    --accent-light: #e0e7ff;
-    /* Indigo 100 */
-    --card-bg: #ffffff;
-    --skill-card-bg: #f8fafc;
+    --black:   #191f28;
+    --g800:    #2e3a49;
+    --g600:    #4e5968;
+    --g500:    #6b7684;
+    --g400:    #8b95a1;
+    --g200:    #e5eaef;
+    --g100:    #f2f4f6;
+    --g50:     #f8f9fa;
+    --blue:    #3182f6;
+    --bluedark:#1b64da;
+    --bluel:   #ebf3fe;
+    --green:   #00b493;
+    --greenl:  #e6faf6;
+    --white:   #ffffff;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 body {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    line-height: 1.5;
-    padding: 20px 10px;
+    background: #dde1e7;
+    color: var(--black);
     letter-spacing: -0.02em;
     word-break: keep-all;
+    /* screen: vertical scroll */
+    padding: 32px 20px;
 }
 
-.resume-container {
-    max-width: 780px;
-    margin: 0 auto;
-    background-color: var(--container-bg);
-    border-radius: 24px;
-    padding: 40px 50px;
-    box-shadow:
-        0 10px 30px -10px rgba(0, 0, 0, 0.04),
-        0 1px 3px rgba(0, 0, 0, 0.02),
-        0 0 1px rgba(0, 0, 0, 0.1);
+/* ============================================================
+   PAGE — 스크린에서는 A4 비율 카드, 인쇄에서는 정확한 A4
+   ============================================================ */
+.page {
+    /* 210mm ≈ 794px, 297mm ≈ 1123px */
+    width: 794px;
+    min-height: 1123px;
+    margin: 0 auto 28px;
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+    background: linear-gradient(135deg, #ffffff 0%, var(--g100) 100%);
+    border-bottom: 1px solid var(--g200);
+    padding: 36px 48px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-shrink: 0;
     position: relative;
     overflow: hidden;
 }
-
-/* 상단 그라데이션 라인 장식 */
-.resume-container::before {
+.hero::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-    background: linear-gradient(90deg, #4f46e5, #3b82f6, #10b981);
+    right: -60px; top: -60px;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(49,130,246,0.06) 0%, transparent 68%);
+    pointer-events: none;
 }
 
-/* Header / Profile Section */
-.profile-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-}
-
-.profile-info {
-    flex: 1;
-}
-
-.name-area {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.hero-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
     margin-bottom: 8px;
 }
-
-.name-area h1 {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--text-main);
-    letter-spacing: -0.03em;
+.hero-name {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--black);
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    margin-bottom: 10px;
 }
-
-.demographics {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-sub);
-    margin-bottom: 16px;
-    display: inline-flex;
-    align-items: center;
-    background-color: #f1f5f9;
-    padding: 3px 8px;
-    border-radius: 6px;
+.hero-desc {
+    font-size: 13px;
+    color: var(--g600);
+    line-height: 1.7;
+    margin-bottom: 18px;
 }
-
-.profile-subtitle {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--accent-color);
-    margin-bottom: 8px;
-}
-
-.contact-info {
-    font-size: 14px;
-}
-
-.contact-row {
+.hero-contacts {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
-    align-items: center;
-}
-
-.contact-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--text-sub);
-}
-
-.contact-item i {
-    color: var(--accent-color);
-    font-size: 14px;
-}
-
-.contact-item .label {
-    font-weight: 600;
-    color: var(--text-main);
-}
-
-.contact-item .value {
-    color: var(--text-sub);
-}
-
-.profile-photo {
-    width: 110px;
-    height: 145px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.05),
-        0 0 1px rgba(0, 0, 0, 0.1);
-    border: 3px solid #ffffff;
-    margin-left: 30px;
-    flex-shrink: 0;
-    transition: transform 0.3s ease;
-}
-
-.profile-photo:hover {
-    transform: scale(1.03);
-}
-
-.profile-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.section-divider {
-    border: none;
-    border-top: 1px solid var(--border-color);
-    margin: 24px 0;
-}
-
-/* Sections Common */
-.education-section {
-    margin-bottom: 28px;
-}
-
-.section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 8px;
-    margin-bottom: 14px;
-}
-
-.section-header-left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* 타이틀 왼쪽에 인디고 바 포인트 */
-.section-header-left::before {
-    content: '';
-    display: inline-block;
-    width: 4px;
-    height: 18px;
-    background-color: var(--accent-color);
-    border-radius: 2px;
-}
-
-.section-header h2 {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text-main);
-    letter-spacing: -0.02em;
-}
-
-.section-header .sub-badge {
-    color: var(--accent-color);
-    background-color: var(--accent-light);
+    gap: 4px 10px;
     font-size: 12px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 20px;
+    color: var(--g500);
+}
+.hero-contacts .sep { color: var(--g400); }
+
+.hero-photo {
+    flex-shrink: 0;
+    width: 88px;
+    height: 117px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--g200);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 1;
 }
 
-.education-list {
+/* ============================================================
+   KPI STRIP
+   ============================================================ */
+.kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--g200);
+    flex-shrink: 0;
+}
+.kpi-card {
+    padding: 12px 16px;
+    border-right: 1px solid var(--g200);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+}
+.kpi-card:last-child { border-right: none; }
+
+.kpi-n {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--blue);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 1px;
+}
+.kpi-n em {
+    font-size: 13px;
+    font-weight: 700;
+    font-style: normal;
+}
+.kpi-n em.arr {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--g400);
+    margin: 0 1px;
+}
+.kpi-d {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--g500);
+}
+
+/* ============================================================
+   PAGE BODY
+   ============================================================ */
+.page-body {
+    padding: 0 48px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.page-body.full {
+    padding: 0 48px;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.sec {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--g200);
+}
+.sec.last { border-bottom: none; }
+
+.sec-t {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: var(--g400);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
     gap: 8px;
 }
-
-.education-item {
-    display: flex;
-    padding: 12px 16px;
-    border-radius: 10px;
-    background-color: transparent;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    border: 1px solid transparent;
-}
-
-.education-item:hover {
-    background-color: #f8fafc;
-    border-color: #f1f5f9;
-    transform: translateX(4px);
-}
-
-.edu-date {
-    width: 170px;
+.sec-n {
+    font-size: 9.5px;
+    font-weight: 900;
+    color: var(--blue);
+    background: var(--bluel);
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
     flex-shrink: 0;
 }
-
-.edu-date .period {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-main);
-    margin-bottom: 2px;
+.sec-badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--blue);
+    background: var(--bluel);
+    padding: 1px 7px;
+    border-radius: 20px;
+    text-transform: none;
+    letter-spacing: -0.01em;
 }
 
-.edu-date .status {
-    font-size: 12px;
-    color: var(--text-muted);
+/* ============================================================
+   ROW (학력, 경력, 자격)
+   ============================================================ */
+.row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+.row-period {
+    flex-shrink: 0;
+    width: 130px;
+    font-size: 11.5px;
     font-weight: 500;
+    color: var(--g400);
+    padding-top: 3px;
+}
+.row-r { flex: 1; }
+.row-main {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.row-sub {
+    font-size: 12.5px;
+    color: var(--g500);
+    margin-bottom: 6px;
 }
 
-.edu-details {
-    flex: 1;
+/* chips */
+.chip {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+    line-height: 1.6;
+}
+.chip.g  { color: var(--green); background: var(--greenl); }
+.chip.b  { color: var(--blue);  background: var(--bluel); }
+.chip.gr { color: var(--g500);  background: var(--g100); }
+.ml6 { margin-left: 6px; }
+
+/* ============================================================
+   BULLET LIST
+   ============================================================ */
+.bl {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.bl li {
+    position: relative;
+    padding-left: 13px;
+    font-size: 12.5px;
+    color: var(--g600);
+    line-height: 1.6;
+}
+.bl li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 700;
 }
 
-.edu-title {
+/* ============================================================
+   PROJECT CARDS
+   ============================================================ */
+.proj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.proj-card {
+    background: var(--g50);
+    border: 1px solid var(--g200);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+.proj-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    gap: 8px;
+}
+.proj-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--black);
+}
+.proj-period {
+    font-size: 11px;
+    color: var(--g400);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.proj-desc {
+    font-size: 11.5px;
+    color: var(--g500);
+    margin-bottom: 4px;
+}
+.proj-result {
+    margin-top: 8px;
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--blue);
+    background: var(--bluel);
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+.proj-result strong { font-weight: 800; }
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.sg-cat {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--g500);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+}
+.sg-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.stag {
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1.5px solid var(--g200);
+    color: var(--g800);
+    background: var(--white);
+}
+.stag.h {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+}
+.stag.m {
+    background: var(--bluel);
+    border-color: #c5dcfd;
+    color: var(--bluedark);
+}
+
+/* ============================================================
+   PAGE 2–3 : INNER HEADER
+   ============================================================ */
+.inner-hd {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 32px 0 16px;
+    border-bottom: 2.5px solid var(--black);
+    margin-bottom: 0;
+}
+.inner-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+}
+.inner-title {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--black);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+}
+.inner-badge {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--blue);
+    background: var(--bluel);
+    padding: 5px 12px;
+    border-radius: 7px;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   SUMMARY BLOCK
+   ============================================================ */
+.summ-block {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--g200);
+}
+.summ-heading {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: var(--g400);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.summ-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.summ-list li {
+    position: relative;
+    padding-left: 14px;
+    font-size: 13px;
+    color: var(--g600);
+    line-height: 1.6;
+}
+.summ-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 4px; height: 4px;
+    background: var(--blue);
+    border-radius: 50%;
+}
+
+.career-section-label {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: var(--g400);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 28px 0 4px;
+}
+
+/* ============================================================
+   CAREER BLOCK (경력기술서)
+   ============================================================ */
+.cb {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--g100);
+}
+.cb.last { border-bottom: none; padding-bottom: 32px; }
+
+.cb-meta {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
+    margin-bottom: 5px;
 }
-
-.edu-title h3 {
-    font-size: 15px;
+.cb-period {
+    font-size: 11px;
     font-weight: 700;
-    color: var(--text-main);
+    color: var(--blue);
 }
-
-.edu-title .major {
-    font-size: 14px;
-    color: var(--text-sub);
-    font-weight: 500;
-}
-
-.edu-meta {
-    font-size: 12px;
-    color: var(--text-sub);
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.edu-meta span {
-    background-color: #f1f5f9;
+.cb-role {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--g500);
+    background: var(--g100);
     padding: 2px 8px;
     border-radius: 4px;
-    font-weight: 500;
 }
-
-.edu-meta .divider {
-    display: none;
-    /* 플랫 배지 스타일로 변경하여 디바이더 제거 */
+.cb-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    line-height: 1.3;
 }
-
-/* Rich Details in Experience & Projects */
-.edu-meta-bullets {
-    margin-top: 6px;
-    color: var(--text-sub);
-    font-size: 14px;
-    line-height: 1.6;
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.edu-meta-bullets li {
-    position: relative;
-    padding-left: 12px;
-    margin-bottom: 3px;
-}
-
-.edu-meta-bullets li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-    font-weight: bold;
-}
-
-.project-desc-block {
-    margin-top: 6px;
-    font-size: 14px;
-    color: var(--text-sub);
-    line-height: 1.6;
-}
-
-.project-desc-block strong {
-    color: var(--text-main);
-    font-weight: 700;
-    display: block;
-    margin-bottom: 4px;
-    font-size: 13.5px;
-}
-
-.project-desc-bullets {
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 6px;
-}
-
-.project-desc-bullets li {
-    position: relative;
-    padding-left: 12px;
-    margin-bottom: 2px;
-}
-
-.project-desc-bullets li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-}
-
-/* Skills & Tools Section (uses .education-section + .section-header for header) */
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    background-color: transparent;
-    padding: 0;
-    border-radius: 20px;
-    border: none;
-}
-
-.skill-card {
-    background-color: transparent;
-    border-radius: 12px;
-    padding: 16px 16px;
-    box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.01),
-        0 2px 4px -1px rgba(0, 0, 0, 0.01);
-    border: 1px solid #e2e8f0;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.skill-card:hover {
-    transform: translateY(-2px);
-    box-shadow:
-        0 10px 15px -3px rgba(0, 0, 0, 0.02),
-        0 4px 6px -2px rgba(0, 0, 0, 0.02);
-}
-
-.skill-card h3 {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 12px;
-    border-bottom: 2px solid #f1f5f9;
-    padding-bottom: 6px;
-}
-
-.skill-items {
+.cl {
     list-style: none;
     padding: 0;
-    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-}
-
-.skill-items li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12.5px;
-    color: var(--text-sub);
-}
-
-.skill-item-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.skill-name {
-    font-weight: 600;
-    color: var(--text-main);
-}
-
-.stars {
-    display: flex;
-    gap: 2px;
-}
-
-.stars i {
-    font-size: 11px;
-    color: #4f46e5;
-    /* 세련된 인디고 별색상 */
-}
-
-.stars i.fa-regular {
-    color: #cbd5e1;
-    /* Slate 300 비어있는 별 */
-}
-
-/* Career Summary Block */
-.career-summary-block {
-    background-color: #f8fafc;
-    border-left: 4px solid var(--accent-color);
-    padding: 16px 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    border: 1px solid var(--border-color);
-    border-left: 4px solid var(--accent-color);
-}
-
-.career-summary-block .summary-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent-color);
-    margin-bottom: 8px;
-}
-
-.career-summary-block .summary-list {
-    list-style-type: none;
-    padding-left: 0;
-    margin: 0;
-}
-
-.career-summary-block .summary-list li {
-    font-size: 14px;
-    color: var(--text-sub);
-    position: relative;
-    padding-left: 14px;
-    line-height: 1.5;
-    margin-bottom: 4px;
-}
-
-.career-summary-block .summary-list li:last-child {
-    margin-bottom: 0;
-}
-
-.career-summary-block .summary-list li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-    font-weight: bold;
-}
-
-.section-subheader {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-main);
+    gap: 3px;
     margin-bottom: 10px;
-    padding-left: 16px;
 }
-
-/* Personal Statement (자기소개서) Section Styles */
-.personal-statement-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.statement-item {
-    background-color: #f8fafc;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 16px 20px;
-    transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.statement-item:hover {
-    transform: translateX(6px);
-    background-color: #ffffff;
-    border-color: var(--accent-light);
-    box-shadow:
-        0 10px 20px -10px rgba(79, 70, 229, 0.08),
-        0 1px 3px rgba(0, 0, 0, 0.02);
-}
-
-.statement-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 8px;
+.cl li {
     position: relative;
-    padding-left: 12px;
-    display: flex;
-    align-items: center;
-}
-
-.statement-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 3px;
-    height: 14px;
-    background-color: var(--accent-color);
-    border-radius: 2px;
-}
-
-.statement-content {
-    font-size: 14px;
-    color: var(--text-sub);
+    padding-left: 13px;
+    font-size: 12.5px;
+    color: var(--g600);
     line-height: 1.6;
 }
+.cl li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--g400);
+}
+.cb-achieve {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--g600);
+    background: var(--bluel);
+    border: 1px solid #c5dcfd;
+    border-radius: 7px;
+    padding: 5px 12px;
+}
+.ach-tag {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--white);
+    background: var(--blue);
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+}
+.cb-achieve strong { font-weight: 800; color: var(--bluedark); }
 
-.statement-content p {
-    margin-bottom: 8px;
+/* ============================================================
+   ESSAY (자기소개서)
+   ============================================================ */
+.essay-list {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 32px;
+}
+.essay {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--g200);
+}
+.essay:last-child { border-bottom: none; }
+
+.essay-num {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--blue);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+}
+.essay-title {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+    margin-bottom: 7px;
+}
+.essay-kpi {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--bluedark);
+    background: var(--bluel);
+    border: 1px solid #c5dcfd;
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.essay-kpi strong { font-weight: 900; }
+
+.essay-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.essay-body p {
+    font-size: 13px;
+    color: var(--g600);
+    line-height: 1.72;
 }
 
-.statement-content p:last-child {
-    margin-bottom: 0;
-}
+/* ============================================================
+   PRINT — A4 정밀 레이아웃
+   ============================================================ */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+        margin: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 
-/* Responsiveness */
-@media (max-width: 860px) {
-    .resume-container {
-        padding: 30px 24px;
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    .page {
+        width: 210mm;
+        height: 297mm;
+        min-height: unset;
+        overflow: hidden;
         border-radius: 0;
         box-shadow: none;
-        border: none;
+        margin: 0;
+        page-break-after: always;
+        break-after: page;
     }
-
-    body {
-        padding: 0;
+    .page:last-child {
+        page-break-after: avoid;
+        break-after: avoid;
     }
-}
-
-@media (max-width: 768px) {
-    .profile-section {
-        flex-direction: column-reverse;
-        align-items: center;
-        text-align: center;
-        gap: 24px;
-        margin-bottom: 24px;
-    }
-
-    .profile-photo {
-        margin-left: 0;
-        width: 110px;
-        height: 145px;
-    }
-
-    .contact-row {
-        justify-content: center;
-    }
-
-    .education-item {
-        flex-direction: column;
-        gap: 8px;
-        padding: 12px;
-    }
-
-    .edu-date {
-        width: 100%;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 0;
-    }
-}
-
-/* A4 Print Styles */
-@media print {
     .page-break {
         page-break-before: always;
         break-before: page;
     }
 
-    @page {
-        size: A4;
-        margin: 15mm 0;
-    }
+    /* ── Print spacing overrides ── */
+    .hero             { padding: 28px 44px 22px; }
+    .hero-name        { font-size: 34px; }
+    .hero-photo       { width: 82px; height: 109px; }
+    .hero-desc        { font-size: 12px; margin-bottom: 14px; }
+    .hero-contacts    { font-size: 11px; }
 
-    body {
-        padding: 0;
-        margin: 0;
-        background-color: #ffffff;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
+    .kpi-card         { padding: 10px 14px; }
+    .kpi-n            { font-size: 20px; }
+    .kpi-d            { font-size: 10px; }
 
-    .resume-container {
-        max-width: 100%;
-        padding: 15px 45px;
+    .page-body        { padding: 0 44px; }
+    .page-body.full   { padding: 0 44px; }
+
+    .sec              { padding: 11px 0; }
+    .sec.last         { padding-bottom: 0; }
+    .sec-t            { margin-bottom: 9px; font-size: 10px; }
+
+    .row-main         { font-size: 13.5px; }
+    .row-sub          { font-size: 11.5px; margin-bottom: 4px; }
+    .row-period       { font-size: 11px; width: 120px; }
+    .row              { gap: 12px; }
+
+    .bl li            { font-size: 11.5px; line-height: 1.55; }
+    .proj-card        { padding: 11px 14px; }
+    .proj-name        { font-size: 12.5px; }
+    .proj-desc        { font-size: 11px; margin-bottom: 3px; }
+    .proj-grid        { gap: 8px; }
+    .proj-result      { font-size: 10.5px; padding: 2px 8px; margin-top: 6px; }
+    .stag             { font-size: 10.5px; padding: 3px 8px; }
+    .sg-tags          { gap: 4px; }
+    .skills-row       { gap: 12px; }
+
+    /* Page 2 print */
+    .inner-hd         { padding: 24px 0 14px; }
+    .inner-title      { font-size: 24px; }
+    .summ-block       { padding: 12px 0; }
+    .summ-list li     { font-size: 12px; line-height: 1.55; }
+    .career-section-label { padding: 10px 0 2px; font-size: 10px; }
+    .cb               { padding: 11px 0; }
+    .cb.last          { padding-bottom: 28px; }
+    .cb-title         { font-size: 14.5px; margin-bottom: 6px; }
+    .cl li            { font-size: 11.5px; line-height: 1.55; gap: 2px; }
+    .cb-achieve       { font-size: 11px; padding: 4px 10px; }
+    .cb-meta          { margin-bottom: 4px; }
+
+    /* Page 3 print */
+    .essay            { padding: 14px 0; }
+    .essay-title      { font-size: 14px; margin-bottom: 5px; }
+    .essay-kpi        { font-size: 10.5px; margin-bottom: 8px; }
+    .essay-body p     { font-size: 12px; line-height: 1.7; }
+    .essay-body       { gap: 5px; }
+
+    * { transition: none !important; }
+}
+
+/* ============================================================
+   RESPONSIVE (모바일)
+   ============================================================ */
+@media (max-width: 840px) {
+    body { padding: 0; }
+    .page {
+        width: 100%;
         border-radius: 0;
         box-shadow: none;
-        overflow: visible;
+        margin-bottom: 12px;
+        min-height: unset;
     }
-
-    .resume-container::before {
-        display: none;
-    }
-
-    /* 섹션 내부 컨텐츠 잘림 방지 */
-    .education-section,
-    .education-item,
-    .statement-item,
-    .skill-card,
-    .career-summary-block {
-        page-break-inside: avoid;
-        break-inside: avoid;
-    }
-
-    /* 섹션 헤더가 페이지 하단에 홀로 남지 않도록 */
-    .section-header {
-        page-break-after: avoid;
-        break-after: avoid;
-    }
-
-    /* 호버 효과 제거 */
-    .education-item:hover,
-    .skill-card:hover,
-    .statement-item:hover,
-    .profile-photo:hover {
-        transform: none;
-        box-shadow: none;
-    }
-
-    /* --- 경력기술서 및 자기소개서 1페이지 내 배치 최적화 (PDF 4페이지 맞춤) --- */
-
-    /* 전체 인쇄용 폰트 및 라인높이 축소 */
-    .education-item {
-        padding: 6px 12px !important;
-        margin-bottom: 4px !important;
-    }
-
-    /* 인라인 스타일 강제 오버라이드 */
-    .education-item h3 {
-        font-size: 15.5px !important;
-    }
-
-    .education-item .edu-meta {
-        margin-bottom: 4px !important;
-    }
-
-    .education-item .edu-meta span {
-        font-size: 11.5px !important;
-        padding: 2px 6px !important;
-    }
-
-    .project-desc-block {
-        margin-top: 2px !important;
-    }
-
-    .project-desc-block strong {
-        font-size: 13.5px !important;
-        margin-bottom: 2px !important;
-    }
-
-    .project-desc-bullets,
-    .edu-meta-bullets {
-        margin-top: 2px !important;
-    }
-
-    .project-desc-bullets li,
-    .edu-meta-bullets li {
-        font-size: 14px !important;
-        line-height: 1.4 !important;
-        margin-bottom: 3px !important;
-    }
-
-    /* 경력기술서 요약 블록 축소 */
-    .career-summary-block {
-        padding: 8px 14px !important;
-    }
-
-    .career-summary-block .summary-title {
-        font-size: 13px !important;
-        margin-bottom: 4px !important;
-    }
-
-    .career-summary-block .summary-list li {
-        font-size: 14px !important;
-        line-height: 1.4 !important;
-        margin-bottom: 3px !important;
-    }
-
-    .section-subheader {
-        font-size: 13px !important;
-        margin-bottom: 4px !important;
-    }
-
-    /* 자기소개서 블록 축소 */
-    .statement-item {
-        padding: 8px 14px !important;
-    }
-
-    .statement-title {
-        font-size: 14.5px !important;
-        margin-bottom: 4px !important;
-    }
-
-    .statement-content {
-        font-size: 14px !important;
-        line-height: 1.4 !important;
-    }
-
-    .statement-content p {
-        margin-bottom: 4px !important;
-    }
+    .hero { padding: 28px 24px; flex-direction: column-reverse; align-items: center; }
+    .hero::after { display: none; }
+    .hero-left { text-align: center; }
+    .hero-contacts { justify-content: center; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-card { border-bottom: 1px solid var(--g200); }
+    .page-body, .page-body.full { padding: 0 24px; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .skills-row { grid-template-columns: 1fr 1fr; }
+    .row { flex-direction: column; gap: 4px; }
+    .row-period { width: 100%; }
+    .inner-hd { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .cb-meta { flex-direction: column; gap: 4px; }
 }

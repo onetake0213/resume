@@ -468,7 +468,7 @@ body {
    CAREER BLOCK (경력기술서)
    ============================================================ */
 .cb {
-    padding: 19px 0;
+    padding: 18px 0;
     border-bottom: 1px solid var(--g100);
 }
 .cb.last { border-bottom: none; padding-bottom: 32px; }

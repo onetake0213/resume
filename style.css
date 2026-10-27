@@ -181,7 +181,7 @@ body {
    SECTIONS
    ============================================================ */
 .sec {
-    padding: 24px 0;
+    padding: 20px 0;
     border-bottom: 1px solid var(--g200);
 }
 .sec.last { border-bottom: none; }
@@ -229,6 +229,7 @@ body {
     display: flex;
     gap: 16px;
     align-items: flex-start;
+    padding: 8px 0px;
 }
 .row-period {
     flex-shrink: 0;
@@ -243,7 +244,7 @@ body {
     font-size: 13.5px;
     font-weight: 700;
     color: var(--black);
-    margin-bottom: 1px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -356,7 +357,7 @@ body {
     color: var(--g500);
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    margin-bottom: 3px;
+    margin: 10px 0px;
 }
 .sg-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 
@@ -467,7 +468,7 @@ body {
    CAREER BLOCK (경력기술서)
    ============================================================ */
 .cb {
-    padding: 20px 0;
+    padding: 19px 0;
     border-bottom: 1px solid var(--g100);
 }
 .cb.last { border-bottom: none; padding-bottom: 32px; }
@@ -484,12 +485,12 @@ body {
     color: var(--blue);
 }
 .cb-role {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--g500);
     background: var(--g100);
-    padding: 2px 8px;
-    border-radius: 4px;
+    padding: 2px;
+    /* border-radius: 4px; */
 }
 .cb-title {
     font-size: 16px;
@@ -523,7 +524,7 @@ body {
 .cb-achieve {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 14px;
     font-size: 12px;
     font-weight: 500;
     color: var(--g600);
@@ -537,7 +538,7 @@ body {
     font-weight: 800;
     color: var(--white);
     background: var(--blue);
-    padding: 1px 6px;
+    padding: 3px 9px;
     border-radius: 3px;
     letter-spacing: 0.02em;
 }
@@ -549,7 +550,7 @@ body {
 .essay-list {
     display: flex;
     flex-direction: column;
-    padding-bottom: 32px;
+    /* padding-bottom: 32px; */
 }
 .essay {
     padding: 18px 0;
